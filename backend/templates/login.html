@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>
+
+        <button type="button" onclick="submitForm()">Login</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            var username = document.getElementsByName("username")[0].value;
+            var password = document.getElementsByName("password")[0].value;
+
+            var data = {
+                "username": username,
+                "password": password
+            };
+
+            fetch('{{ url_for("login") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Invalid login credentials');
+                }
+            })
+            .then(data => {
+                console.log(data); // Handle the success response, e.g., redirect to dashboard
+            })
+            .catch(error => {
+                console.error(error); // Handle the error response, e.g., display an error message
+            });
+        }
+    </script>
+</body>
+</html>

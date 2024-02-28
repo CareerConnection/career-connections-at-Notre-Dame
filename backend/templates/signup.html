@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <h2>Signup</h2>
+    <form id="signupForm">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+
+        <button type="button" onclick="submitForm()">Signup</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            var username = document.getElementsByName("username")[0].value;
+            var password = document.getElementsByName("password")[0].value;
+            var email = document.getElementsByName("email")[0].value;
+
+            var data = {
+                "username": username,
+                "password": password,
+                "email": email
+            };
+
+            fetch('{{ url_for("signup") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Signup failed');
+                }
+            })
+            .then(data => {
+                console.log(data); // Handle the success response, e.g., redirect to login
+            })
+            .catch(error => {
+                console.error(error); // Handle the error response, e.g., display an error message
+            });
+        }
+    </script>
+</body>
+</html>
+
