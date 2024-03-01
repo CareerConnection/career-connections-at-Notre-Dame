@@ -1,5 +1,6 @@
 #db.py
 import mysql.connector
+import csv
 
 # Establish a connection to the MySQL server
 host = 'odyssey2024.czyq8ucg24sg.us-east-2.rds.amazonaws.com'
@@ -32,6 +33,7 @@ create_table_query = """
 CREATE TABLE IF NOT EXISTS {table} (
   id INT AUTO_INCREMENT PRIMARY KEY,
   class VARCHAR(255) NOT NULL,
+  class_id VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL,
   professor VARCHAR(255) NOT NULL,
   rating INT NOT NULL,
@@ -42,19 +44,19 @@ CREATE TABLE IF NOT EXISTS {table} (
 cursor.execute(create_table_query.format(table=class_table))
 print(f"Table '{class_table}' created successfully")
 
-# Data to be inserted
-class_data = {
-    'class': 'Open Source',
-    'description': 'This class is awesome.',
-    'professor': 'Bui',
-    'rating': 1,
-    'difficulty': 1
-}
 
-#for i, row in int_data:
-# Insert data into the table
-insert_query = f"INSERT INTO {class_table} (class, description, professor, rating, difficulty) VALUES (%s, %s, %s, %s, %s)"
-cursor.execute(insert_query, (class_data['class'], class_data['description'], class_data['professor'], class_data['rating'], class_data['difficulty']))
+# Classes Table
+
+# Insert data into the table from csv
+with open('ClassData.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    for row in csv_reader:
+        insert_query = f"INSERT INTO {class_table} (class, class_id, description, professor, rating, difficulty) VALUES (%s, %s, %s, %s, %s, %s)"
+        cursor.execute(insert_query, (row[0], row[1], row[2], row[3], 0, 0))# Insert data into the table
+
+#insert_query = f"INSERT INTO {class_table} (class, description, professor, rating, difficulty) VALUES (%s, %s, %s, %s, %s)"
+#cursor.execute(insert_query, (class_data['class'], class_data['description'], class_data['professor'], class_data['rating'], class_data['difficulty']))
+
 connection.commit()
 print(f"Data inserted into '{class_table}' successfully")
 
