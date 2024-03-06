@@ -14,6 +14,12 @@ dependencies:
   g:
     specifier: ^2.0.1
     version: 2.0.1
+  localforage:
+    specifier: ^1.10.0
+    version: 1.10.0
+  match-sorter:
+    specifier: ^6.3.4
+    version: 6.3.4
   next:
     specifier: ^13.5.6
     version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
@@ -41,6 +47,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.22.2
     version: 6.22.2(react-dom@18.2.0)(react@18.2.0)
+  sort-by:
+    specifier: ^0.0.2
+    version: 0.0.2
 
 devDependencies:
   '@types/node':
@@ -1711,6 +1720,10 @@ packages:
     resolution: {integrity: sha512-8Sb3veuYCyrZL+VBt9LJfZjLUPWVvqn8tG28VqYNFCo43KHcKuq+b4EiXGeuaLAQWL2YmyDgMp2aSpH9JHsEQg==}
     dev: false
 
+  /immediate@3.0.6:
+    resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
+    dev: false
+
   /inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: false
@@ -1927,6 +1940,12 @@ packages:
     resolution: {integrity: sha512-8h2oVEZNktL4BH2JCOI90iD1yXwL6iNW7KcCKT2QZgQJR2vbqDsldCTPRU9NifTCqHZci57XvQQ15YTu+sTYPg==}
     dev: false
 
+  /lie@3.1.1:
+    resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
+    dependencies:
+      immediate: 3.0.6
+    dev: false
+
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
@@ -1940,6 +1959,12 @@ packages:
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
+
+  /localforage@1.10.0:
+    resolution: {integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==}
+    dependencies:
+      lie: 3.1.1
+    dev: false
 
   /lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
@@ -3371,6 +3396,10 @@ packages:
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+    dev: false
+
+  /sort-by@0.0.2:
+    resolution: {integrity: sha512-iOX5oHA4a0eqTMFiWrHYqv924UeRKFBLhym7iwSVG37Egg2wApgZKAjyzM9WZjMwKv6+8Zi+nIaJ7FYsO9EkoA==}
     dev: false
 
   /sort-keys@5.0.0:
