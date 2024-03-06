@@ -1,23 +1,12 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from '../pages/NavBar';
-import MainSection from "../pages/MainSection";
-import LandingPage from "../pages/LandingPage";
+import React from 'react';
+import Home from "./Home";
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    // <Router>
       <div className="w-full px-8 min-h-[100vh] flex-col justify-center">
-        <Navbar/>
-        {/* <Routes> */}
-        {/* <LandingPage/> */}
-        <MainSection/>
-          {/* <Route path="/dashboard" element={<MainSection />} /> */}
-        {/* </Routes> */}
+        <Home/>
       </div>
-    // </Router>
   );
 }; 
 

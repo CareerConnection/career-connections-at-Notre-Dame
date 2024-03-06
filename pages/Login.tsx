@@ -6,11 +6,7 @@ import { APPLICATION_ID, JAVASCRIPT_KEY, SERVER_URL } from "../environment";
 Parse.initialize(APPLICATION_ID, JAVASCRIPT_KEY);
 Parse.serverURL = SERVER_URL;
 
-interface Props {
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const LoginPage: React.FC<Props> = ({ setIsLoggedIn }) => {
+const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,7 +16,8 @@ const LoginPage: React.FC<Props> = ({ setIsLoggedIn }) => {
     try {
       let user = await Parse.User.logIn(username, password);
       console.log('Logged in user', user);
-      setIsLoggedIn(true);
+      // Redirect to /dashboard
+      window.location.href = "/Dashboard";
     } catch (error: any) {
       console.error('Error while logging in user', error);
       setError("Invalid username or password.");

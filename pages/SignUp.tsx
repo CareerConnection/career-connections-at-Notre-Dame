@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Parse from "parse";
 import { APPLICATION_ID, JAVASCRIPT_KEY, SERVER_URL } from "../environment";
-import MainSection from "./MainSection";
+import Dashboard from "./Dashboard";
 
 // Initialize Parse SDK
 Parse.initialize(APPLICATION_ID, JAVASCRIPT_KEY);
@@ -40,7 +40,7 @@ const SignUpPage: React.FC = () => {
   };
 
   if (signedUp) {
-    return <MainSection />;
+    return <Dashboard />;
   }
 
   return (
