@@ -1,52 +1,7 @@
-// import React, { useState, useEffect } from "react";
-// import Parse from "parse";
-// import { APPLICATION_ID, JAVASCRIPT_KEY, SERVER_URL } from "../environment";
-
-// const MainSection: React.FC = () => {
-//   const [person, setPerson] = useState<any>(null); // Use "any" for now, replace with proper type
-
-//   useEffect(() => {
-//     // Initializing the SDK
-//     Parse.initialize(APPLICATION_ID, JAVASCRIPT_KEY);
-//     Parse.serverURL = SERVER_URL;
-
-//     const fetchPerson = async () => {
-//       try {
-//         const query = new Parse.Query('Class');
-//         const queryResult = await query.find();
-//         const currentPerson = queryResult[1];
-//         setPerson(currentPerson);
-//       } catch (error) {
-//         console.error("Error fetching person:", error);
-//       }
-//     };
-
-//     fetchPerson();
-//   }, []);
-
-//   return (
-//     <>
-//       <div className="w-full flex justify-center mx-4">
-//         <div className="w-full mt-6 max-w-5xl">
-//           <div className="text-4xl">Class Details</div>
-//           {person && (
-//             <div className="w-full flex-col border border-gray-300 p-4 mt-4 rounded-md">
-//               <h3 className="text-xl font-bold">Class: {person.get('class')}</h3>
-//               <p>ID: {person.get('class')}</p>
-//               <p>Professor: {person.get('id')}</p>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default MainSection;
-
 import React, { useState, useEffect } from "react";
 import Parse from "parse";
 import { APPLICATION_ID, JAVASCRIPT_KEY, SERVER_URL } from "../environment";
+import Login from "./LoginPage"; // Assuming you have a Login component
 
 // Initialize Parse SDK
 Parse.initialize(APPLICATION_ID, JAVASCRIPT_KEY);
@@ -65,31 +20,38 @@ const getAllObjects = async (className) => {
 };
 
 const MainSection: React.FC = () => {
-  const [course, setPersons] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const course = await getAllObjects("Class");
-      setPersons(course);
+      const courses = await getAllObjects("Class");
+      setCourses(courses);
     };
 
-    fetchData();
-  }, []);
+    if (isLoggedIn) {
+      fetchData();
+    }
+  }, [isLoggedIn]);
 
   return (
     <>
-      <div className="w-full flex justify-center mx-4">
-        <div className="w-full mt-6 max-w-5xl">
-          <div className="text-4xl">Courses</div>
-          {course.map((person, index) => (
-            <div key={index} className="w-full flex-col border border-gray-300 p-4 mt-4 rounded-md">
-              <h3 className="text-xl font-bold">{person.class}</h3>
-              <p>Professor: {person.professor}</p>
-              <p>ID: {person.classID}</p>
-            </div>
-          ))}
+      {isLoggedIn ? (
+        <div className="w-full flex justify-center mx-4">
+          <div className="w-full mt-6 max-w-5xl">
+            <div className="text-4xl">Courses</div>
+            {courses.map((course, index) => (
+              <div key={index} className="w-full flex-col border border-gray-300 p-4 mt-4 rounded-md">
+                <h3 className="text-xl font-bold">{course.class}</h3>
+                <p>Professor: {course.professor}</p>
+                <p>ID: {course.classID}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <Login setIsLoggedIn={setIsLoggedIn} />
+      )}
     </>
   );
 };

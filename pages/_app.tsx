@@ -1,9 +1,12 @@
+import React from "react";
 import '../styles/globals.css';
-import Navbar from './NavBar';
+import { AuthProvider } from "../pages/auth";
 
 function MyApp({ Component, pageProps }) {
     return (
-        <Component {...pageProps} />
+        <AuthProvider>
+            <Component {...pageProps} />
+        </AuthProvider>
     );
 }
 

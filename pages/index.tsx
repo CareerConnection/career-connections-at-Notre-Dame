@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from '../pages/NavBar';
-import Login from "../pages/LoginPage";
 import MainSection from "../pages/MainSection";
-// import { Link } from 'react-router-dom';
+import LandingPage from "../pages/LandingPage";
 
 const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    <div className="w-full px-8 min-h-[100vh] flex-col justify-center">
-      <Navbar />
-        <MainSection />
-    </div>
+    <Router>
+      <div className="w-full px-8 min-h-[100vh] flex-col justify-center">
+        <Navbar isLoggedIn={isLoggedIn} />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<MainSection />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }; 
 
