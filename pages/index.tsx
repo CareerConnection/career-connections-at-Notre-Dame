@@ -8,15 +8,16 @@ const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <Router>
+    // <Router>
       <div className="w-full px-8 min-h-[100vh] flex-col justify-center">
-        <Navbar isLoggedIn={isLoggedIn} />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/dashboard" element={<MainSection />} />
-        </Routes>
+        {/* <Navbar isLoggedIn={isLoggedIn} /> */}
+        {/* <Routes> */}
+        {/* <LandingPage/> */}
+        <MainSection/>
+          {/* <Route path="/dashboard" element={<MainSection />} /> */}
+        {/* </Routes> */}
       </div>
-    </Router>
+    // </Router>
   );
 }; 
 
