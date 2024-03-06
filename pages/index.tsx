@@ -10,7 +10,7 @@ const App: React.FC = () => {
   return (
     // <Router>
       <div className="w-full px-8 min-h-[100vh] flex-col justify-center">
-        {/* <Navbar isLoggedIn={isLoggedIn} /> */}
+        <Navbar/>
         {/* <Routes> */}
         {/* <LandingPage/> */}
         <MainSection/>
