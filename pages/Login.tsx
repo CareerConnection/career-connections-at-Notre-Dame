@@ -26,7 +26,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <form onSubmit={handleLogin} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form onSubmit={handleLogin} className="bg-white border min-w-[350px] rounded-lg px-8 pt-6 pb-8 mb-4">
         <h2 className="text-xl font-bold mb-4">Login</h2>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
@@ -58,10 +58,10 @@ const LoginPage: React.FC = () => {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out"
             type="submit"
           >
-            Sign In
+            Log In
           </button>
         </div>
         {error && <p className="text-red-500 text-xs mt-2">{error}</p>}

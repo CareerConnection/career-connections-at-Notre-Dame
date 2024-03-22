@@ -18,24 +18,11 @@ const Navbar: React.FC = () => {
           {/* this is the container for the right side of the menu buttons */}
           <div className="flex items-center gap-4">
             <Link href="/Dashboard">
-              Dashboard
+              Courses
             </Link>
             
             <Link href="/Planner">
               Planner
-            </Link>
-
-            {/* we will make a button component and use it for login button */}
-            <Link href="SignUp">
-              <div className="flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out">
-                SignUp
-              </div>
-            </Link>
-
-            <Link href="Login">
-              <div className="flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out">
-                Login
-              </div>
             </Link>
 
             <Link href="AboutUs">
@@ -43,6 +30,20 @@ const Navbar: React.FC = () => {
                 About Us
               </div>
             </Link>
+
+            <Link href="Login">
+              <div className="flex items-center justify-center px-4 py-2 text-black bg-gray-300 rounded-md hover:bg-gray-500 transition-all duration-200 ease-out">
+                Login
+              </div>
+            </Link>
+
+            {/* we will make a button component and use it for login button */}
+            <Link href="SignUp">
+              <div className="flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out">
+                Sign Up
+              </div>
+            </Link>
+
           </div>
         </div>
       </div>

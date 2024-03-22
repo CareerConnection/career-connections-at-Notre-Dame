@@ -1,11 +1,11 @@
 import React from 'react';
-import Home from "./Home";
+import Dashboard from "./Dashboard";
 
 const App: React.FC = () => {
 
   return (
       <div className="w-full px-8 min-h-[100vh] flex-col justify-center">
-        <Home/>
+        <Dashboard/>
       </div>
   );
 }; 
