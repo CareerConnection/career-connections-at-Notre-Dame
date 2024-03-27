@@ -38,11 +38,16 @@ const Navbar: React.FC = () => {
               </div>
             </Link>
 
-            <Link href="AboutUs">
-              <div className="">
-                About Us
+            <Link href="Cart">
+              <div className="flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition-all duration-200 ease-out">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a2 2 0 100-4 2 2 0 000 4zM4 4a2 2 0 012-2h8a2 2 0 012 2v1H4V4zm1 3h10v1H5V7zM5 10h10v6a1 1 0 01-1 1H6a1 1 0 01-1-1v-6z" clip-rule="evenodd" />
+                </svg>
+                Cart
               </div>
             </Link>
+
+            
           </div>
         </div>
       </div>
