@@ -53,7 +53,7 @@ const Planner: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Planner</h1>
+      <h1 className="text-3xl font-bold mb-4">Pathways</h1>
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Curated Classes for Different Industries</h2>
         {industryClasses.map((industryClass, index) => (
