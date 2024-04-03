@@ -18,11 +18,11 @@ const Navbar: React.FC = () => {
           {/* this is the container for the right side of the menu buttons */}
           <div className="flex items-center gap-4">
             <Link href="/Dashboard">
-              Dashboard
+              Courses
             </Link>
             
             <Link href="/Planner">
-              Planner
+              Pathways
             </Link>
 
             {/* we will make a button component and use it for login button */}
@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M10 18a2 2 0 100-4 2 2 0 000 4zM4 4a2 2 0 012-2h8a2 2 0 012 2v1H4V4zm1 3h10v1H5V7zM5 10h10v6a1 1 0 01-1 1H6a1 1 0 01-1-1v-6z" clip-rule="evenodd" />
                 </svg>
-                Cart
+                Cart (Planner)
               </div>
             </Link>
 
