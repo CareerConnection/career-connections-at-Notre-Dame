@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Parse from "parse";
 import { APPLICATION_ID, JAVASCRIPT_KEY, SERVER_URL } from "../environment";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Courses";
 
 // Initialize Parse SDK
 Parse.initialize(APPLICATION_ID, JAVASCRIPT_KEY);

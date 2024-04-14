@@ -1,12 +1,16 @@
 // components/Layout.tsx
-import React from "react";
-import Navbar from "./NavBar";
+import React from 'react';
+import Navbar from './NavBar';
 
-const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <div>
       <Navbar />
-      <main>{children}</main>
+      <main>{props.children}</main>
     </div>
   );
 };
