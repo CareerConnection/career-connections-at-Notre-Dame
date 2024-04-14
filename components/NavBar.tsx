@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
 
           {/* this is the container for the right side of the menu buttons */}
           <div className="flex items-center gap-6">
-            <Link href="/Dashboard" className="hover:text-gray-500 transition-all duration-200 ease-out">
+            <Link href="/Courses" className="hover:text-gray-500 transition-all duration-200 ease-out">
               Courses
             </Link>
 
