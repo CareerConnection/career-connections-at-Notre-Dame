@@ -14,10 +14,10 @@ const Home: React.FC = () => {
           </div>
         </Link>
 
-        <Link href="/Courses">
+        <Link href="https://www.loom.com/share/9257fe4c3af649bcaf4db4de1f352ba4?sid=a9e4d052-6f82-41a0-99af-bbddd0ed9f93" target="_blank" >
           <div className="flex items-center justify-center bg-gray-200 ml-2 px-4 py-2 text-black rounded-md hover:bg-gray-400 transition-all duration-200 ease-out"
           >
-            Browse Courses
+            Click to see our first demo :&#41;
           </div>
         </Link>
       </div>
