@@ -57,6 +57,10 @@ const Navbar: React.FC = () => {
               Pathways
             </Link>
 
+            <Link href="https://github.com/CareerConnection/career-connections-at-Notre-Dame" target="_blank" className="hover:text-gray-500 transition-all duration-200 ease-out">
+              GitHub
+            </Link>
+
             {/* we will make a button component and use it for login button */}
 
             {isLoggedIn ? (
