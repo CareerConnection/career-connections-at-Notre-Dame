@@ -61,15 +61,15 @@ const Navbar: React.FC = () => {
 
             {isLoggedIn ? (
                 <div onClick={handleLogout} className="flex items-center justify-center px-4 py-2 bg-gray-200 text-black rounded-md cursor-pointer hover:bg-gray-400 transition-all duration-200 ease-out">
-                  Log Out
+                  Log out
                 </div>
             ) : (
               <>
                 <Link href="Login">
-                  <div className="flex items-center justify-center px-4 py-2 bg-gray-200 text-black rounded-md hover:bg-gray-400 transition-all duration-200 ease-out">Login</div>
+                  <div className="flex items-center justify-center px-4 py-2 bg-gray-200 text-black rounded-md hover:bg-gray-400 transition-all duration-200 ease-out">Log in</div>
                 </Link>
                 <Link href="SignUp">
-                  <div className="flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out">Sign Up</div>
+                  <div className="flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out">Sign up</div>
                 </Link>
               </>
             )}
