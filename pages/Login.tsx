@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
       let user = await Parse.User.logIn(username, password);
       console.log('Logged in user', user);
       // Redirect to /dashboard
-      window.location.href = "/Dashboard";
+      window.location.href = "/Courses";
     } catch (error: any) {
       console.error('Error while logging in user', error);
       setError("Invalid username or password.");
