@@ -1,86 +1,66 @@
-import React, { useState } from 'react';
+import Head from "next/head";
+import { useState, useEffect } from "react";
 
-const CartPage = () => {
-  const [classes, setClasses] = useState([]);
-  const [semesters, setSemesters] = useState(Array.from({ length: 8 }, () => []));
-  const [highlightedSemester, setHighlightedSemester] = useState(null);
+export default function Home() {
+  const totalSemesters = 10;
+  const classesPerSemester = 8;
 
-  const handleAddClass = (className) => {
-    setClasses([...classes, className]);
+  // Create initial state for all classes in all semesters
+  const initialClassesState = Array(totalSemesters)
+    .fill(null)
+    .map(() => Array(classesPerSemester).fill(""));
+
+  // State to hold all class names
+  const [semesters, setSemesters] = useState(initialClassesState);
+
+  const handleInputChange = (semesterIndex, classIndex, value) => {
+    const updatedSemesters = [...semesters];
+    updatedSemesters[semesterIndex][classIndex] = value;
+    setSemesters(updatedSemesters);
   };
 
-  const handleRemoveClass = (index) => {
-    const newClasses = [...classes];
-    newClasses.splice(index, 1);
-    setClasses(newClasses);
+  const saveData = () => {
+    // Perform any other save operations you need here
+
+    // Save semesters state to session storage
+    sessionStorage.setItem("semesters", JSON.stringify(semesters));
   };
 
-  const handleDrop = (semesterIndex, itemIndex) => {
-    const newClasses = [...classes];
-    const removedClass = newClasses.splice(itemIndex, 1)[0];
-    const newSemesters = [...semesters];
-    newSemesters[semesterIndex] = [...newSemesters[semesterIndex], removedClass];
-    setClasses(newClasses);
-    setSemesters(newSemesters);
-  };
-
-  const allowDrop = (event) => {
-    event.preventDefault();
-  };
-
-  const drag = (event, className, index) => {
-    event.dataTransfer.setData('className', className);
-    event.dataTransfer.setData('index', index);
-  };
-
-  const drop = (event, semesterIndex) => {
-    event.preventDefault();
-    const className = event.dataTransfer.getData('className');
-    const index = event.dataTransfer.getData('index');
-    handleDrop(semesterIndex, index);
-    setHighlightedSemester(null);
-  };
+  useEffect(() => {
+    sessionStorage.setItem("semesters", JSON.stringify(semesters));
+  }, [semesters]);
 
   return (
-    <div className="flex flex-col items-center h-screen">
-      <h1 className="text-4xl font-bold mb-4">Your Cart</h1>
-      <div className="top-section mb-4">
-        <h2 className="text-xl font-bold">Classes of Interest</h2>
-        <ul>
-          {classes.map((className, index) => (
-            <li key={index} draggable onDragStart={(e) => drag(e, className, index)}>
-              {className} <button onClick={() => handleRemoveClass(index)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-        <div>
-          <input type="text" placeholder="Enter class name" />
-          <button onClick={() => handleAddClass('New Class')}>Add Class</button>
+    <div className="max-w-5xl container mx-auto p-4">
+      <h1 className="text-4xl">Planner</h1>
+      <button
+        onClick={saveData}
+        className="flex items-center justify-center mt-8 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out"
+      >
+        Save
+      </button>
+      {Array.from({ length: totalSemesters / 2 }, (_, row) => (
+        <div className="flex flex-row" key={row}>
+          {Array.from({ length: 2 }, (_, col) => {
+            const semesterIndex = row * 2 + col;
+            return (
+              <div className="w-1/2 flex flex-col text-lg" key={semesterIndex}>
+                <h2 className="mt-4 mb-2">Semester {semesterIndex + 1}</h2>
+                {semesters[semesterIndex].map((className, index) => (
+                  <input
+                    key={index}
+                    value={className}
+                    onChange={(e) =>
+                      handleInputChange(semesterIndex, index, e.target.value)
+                    }
+                    className="border p-1"
+                  />
+                ))}
+              </div>
+            );
+          })}
         </div>
-      </div>
-      <div className="bottom-section grid grid-cols-8 gap-4">
-        {semesters.map((semester, semesterIndex) => (
-          <div
-            key={semesterIndex}
-            className={`cart-semester bg-gray-200 rounded p-4`}
-            onDrop={(e) => drop(e, semesterIndex)}
-            onDragOver={(e) => {
-              e.preventDefault();
-              setHighlightedSemester(semesterIndex);
-            }}
-            onDragLeave={() => setHighlightedSemester(null)}
-          >
-            <h2>{`Semester ${semesterIndex + 1}`}</h2>
-            <ul>
-              {semester.map((item, itemIndex) => (
-                <li key={itemIndex}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      ))}
     </div>
   );
-};
-
-export default CartPage;
+}
