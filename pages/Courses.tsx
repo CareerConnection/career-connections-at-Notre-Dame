@@ -70,7 +70,6 @@ const Dashboard: React.FC = () => {
         )
     );
   }
-
   // const handleAddToCart = (course) => {
   //   const existingCartItemIndex = cart.findIndex((item) => item.objectId === course.objectId);
   //   if (existingCartItemIndex !== -1) {
@@ -130,6 +129,7 @@ const Dashboard: React.FC = () => {
                   <p>Professor: {course.professors.join(", ")}</p>
                   <p>ID: {course.classID}</p>
                   {/* <button
+                  <button
                     onClick={() => handleAddToCart(course)}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   >
