@@ -143,8 +143,8 @@ const Dashboard: React.FC = () => {
                 <div className="flex flex-col max-h-[80vh] sticky top-6 border border-gray-300 p-4 gap-2 rounded-md overflow-auto">
                   <h3 className="text-xl font-bold">{selectedCourse.class}</h3>
                   <p>Ratings: {additionalInfo.ratings}</p>
-                  <p>Time: {additionalInfo.time}</p>
                   <p>Description: {additionalInfo.description}</p>
+                  <p>Summarized Review: {additionalInfo.reviews}</p>
                 </div>
               </div>
             )}
