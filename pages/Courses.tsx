@@ -71,24 +71,24 @@ const Dashboard: React.FC = () => {
     );
   }
 
-  const handleAddToCart = (course) => {
-    const existingCartItemIndex = cart.findIndex((item) => item.objectId === course.objectId);
-    if (existingCartItemIndex !== -1) {
-      const updatedCart = [...cart];
-      updatedCart[existingCartItemIndex].quantity += 1;
-      setCart(updatedCart);
-    } else {
-      setCart([...cart, { ...course, quantity: 1 }]);
-    }
-  };
+  // const handleAddToCart = (course) => {
+  //   const existingCartItemIndex = cart.findIndex((item) => item.objectId === course.objectId);
+  //   if (existingCartItemIndex !== -1) {
+  //     const updatedCart = [...cart];
+  //     updatedCart[existingCartItemIndex].quantity += 1;
+  //     setCart(updatedCart);
+  //   } else {
+  //     setCart([...cart, { ...course, quantity: 1 }]);
+  //   }
+  // };
 
   return (
     <>
-      <div className="w-full flex justify-center mx-4">
+      <div className="w-full flex justify-center mx-4 mb-8">
         <div className="w-full mt-6 max-w-5xl">
           <div className="text-4xl">Courses</div>
-          <div className="flex">
-            <div className="w-1/2 pl-4 pr-4" style={{ transform: selectedCourse ? "translateX(0)" : "translateX(0%)" }}>
+          <div className="flex mt-4">
+            <div className="w-1/2" style={{ transform: selectedCourse ? "translateX(0)" : "translateX(0%)" }}>
               <div className="flex items-center">
                 <input
                   type="text"
@@ -123,24 +123,24 @@ const Dashboard: React.FC = () => {
               {finalCourses.map((course, index) => (
                 <div
                   key={index}
-                  className="border border-gray-300 p-4 mt-4 rounded-md cursor-pointer"
+                  className="border border-gray-300 p-4 mt-4 rounded-md cursor-pointer hover:bg-gray-200 transition-all duration-200 ease-out"
                   onClick={() => handleCourseClick(course)}
                 >
                   <h3 className="text-xl font-bold">{course.class}</h3>
                   <p>Professor: {course.professors.join(", ")}</p>
                   <p>ID: {course.classID}</p>
-                  <button
+                  {/* <button
                     onClick={() => handleAddToCart(course)}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   >
                     Add to Cart
-                  </button>
+                  </button> */}
                 </div>
               ))}
             </div>
             {selectedCourse && additionalInfo && (
               <div className="w-1/2 pl-4 pr-4" style={{ transform: "translateX(10%)" }}>
-                <div className="border border-gray-300 p-4 mt-4 rounded-md">
+                <div className="flex flex-col max-h-[80vh] sticky top-6 border border-gray-300 p-4 gap-2 rounded-md overflow-auto">
                   <h3 className="text-xl font-bold">{selectedCourse.class}</h3>
                   <p>Ratings: {additionalInfo.ratings}</p>
                   <p>Time: {additionalInfo.time}</p>
