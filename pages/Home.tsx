@@ -6,7 +6,7 @@ const Home: React.FC = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-4xl font-bold">Welcome to Odyssey</h1>
       <p className="max-w-xl text-lg text-center mt-2">Find class reviews and syllabus easily.</p>
-      <div className="flex flex-row gap-2 mt-6">
+      <div className="flex flex-row gap-2 mt-4">
         <Link href="SignUp">
           <div className="flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out"
           >
