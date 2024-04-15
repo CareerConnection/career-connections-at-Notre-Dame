@@ -146,10 +146,20 @@ const Dashboard: React.FC = () => {
                   <h3 className="text-xl font-bold">{selectedCourse.class}</h3>
                   <Link
                     href="https://forms.gle/kswZuYTK8F6wnEnf7"
+                    target="_blank"
                     className="text-blue-500 underline hover:text-blue-300 transition-all duration-200 ease-out"
                   >
                     Leave a review
                   </Link>
+                  {additionalInfo.syllabus && (
+                    <Link
+                      href={additionalInfo.syllabus}
+                      target="_blank"
+                      className="text-blue-500 underline hover:text-blue-300 transition-all duration-200 ease-out"
+                    >
+                      Past Syllabus
+                    </Link>
+                  )}
                   <p><a className="font-bold">Difficulty:</a> {additionalInfo.difficulties}/5</p>
                   <p><a className="font-bold">Description:</a> {additionalInfo.description}</p>
                   <p><a className="font-bold">Summarized Review:</a> {additionalInfo.reviews}</p>
