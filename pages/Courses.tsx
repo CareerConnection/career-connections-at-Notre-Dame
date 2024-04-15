@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Parse from "parse";
 import { APPLICATION_ID, JAVASCRIPT_KEY, SERVER_URL } from "../environment";
+import Link from "next/link";
 
 // Initialize Parse SDK
 Parse.initialize(APPLICATION_ID, JAVASCRIPT_KEY);
@@ -96,14 +97,14 @@ const Dashboard: React.FC = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="border border-gray-300 p-2 rounded-md mr-2"
                 />
-                <select
+                {/* <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                   className="border border-gray-300 p-2 rounded-md mr-2"
                 >
                   <option value="">Sort by...</option>
                   <option value="rating">Rating</option>
-                </select>
+                </select> */}
                 <select
                   value={filterByProfessor}
                   onChange={(e) => setFilterByProfessor(e.target.value)}
@@ -119,7 +120,8 @@ const Dashboard: React.FC = () => {
                   )}
                 </select>
               </div>
-              {finalCourses.map((course, index) => (
+              {finalCourses.sort((a, b) => a.class.localeCompare(b.class))
+              .map((course, index) => (
                 <div
                   key={index}
                   className="border border-gray-300 p-4 mt-4 rounded-md cursor-pointer hover:bg-gray-200 transition-all duration-200 ease-out"
@@ -142,9 +144,15 @@ const Dashboard: React.FC = () => {
               <div className="w-1/2 pl-4 pr-4" style={{ transform: "translateX(10%)" }}>
                 <div className="flex flex-col max-h-[80vh] sticky top-6 border border-gray-300 p-4 gap-2 rounded-md overflow-auto">
                   <h3 className="text-xl font-bold">{selectedCourse.class}</h3>
-                  <p>Ratings: {additionalInfo.ratings}</p>
-                  <p>Description: {additionalInfo.description}</p>
-                  <p>Summarized Review: {additionalInfo.reviews}</p>
+                  <Link
+                    href="https://forms.gle/kswZuYTK8F6wnEnf7"
+                    className="text-blue-500 underline hover:text-blue-300 transition-all duration-200 ease-out"
+                  >
+                    Leave a review
+                  </Link>
+                  <p><a className="font-bold">Difficulty:</a> {additionalInfo.difficulties}/5</p>
+                  <p><a className="font-bold">Description:</a> {additionalInfo.description}</p>
+                  <p><a className="font-bold">Summarized Review:</a> {additionalInfo.reviews}</p>
                 </div>
               </div>
             )}
