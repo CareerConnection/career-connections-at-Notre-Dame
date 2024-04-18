@@ -14,8 +14,30 @@ const SignUpPage: React.FC = () => {
   const [error, setError] = useState("");
   const [signedUp, setSignedUp] = useState(false);
 
+  // NEW constant for email validity
+  const [isEmailValid, setIsEmailValid] = useState(true); 
+
+   // NEW function  to validate email format
+   const validateEmail = (email: string) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  };
+
+  
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+   //NEW: validate email
+   if (!validateEmail(email)) {
+      setError("Invalid email format.");
+      setIsEmailValid(false);
+      return;
+    }
+
+    // NEW Set email as valid
+
+    setIsEmailValid(true);
+   
     try {
       const user = new Parse.User();
       user.set("username", username);
