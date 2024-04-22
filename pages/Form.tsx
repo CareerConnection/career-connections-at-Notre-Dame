@@ -108,14 +108,15 @@ const Form = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container m-auto width-1/2 p-4">
       <h1 className="text-3xl font-bold mb-4">Class Form</h1>
       <form className="text-lg mb-4" onSubmit={handleSubmit}>
-        <label htmlFor="classOptions">Choose a class:</label>
+        <label className="" htmlFor="classOptions">Choose a class*</label>
         <br />
         <select
           id="classOptions"
           value={selectedClass}
+          className="mb-7 p-2.5 w-96 bg-gray-950 border border-gray-300 text-gray-50 text-sm rounded-lg"
           onChange={(e) => setSelectedClass(e.target.value)}
         >
           {classes.map((c) => (
@@ -131,6 +132,7 @@ const Form = () => {
         <select
           id="year"
           value={year}
+          className="mb-7 p-2.5 w-96 bg-gray-950 border border-gray-300 text-gray-50 text-base rounded-lg"
           onChange={(e) => setYear(e.target.value)}
         >
           <option value="Freshman">Freshman</option>
@@ -145,6 +147,7 @@ const Form = () => {
         <select
           id="professor"
           value={selectedProfessor}
+          className="mb-7 p-2.5 w-96 bg-gray-950 border border-gray-300 text-gray-50 text-base rounded-lg"
           onChange={(e) => setSelectedProfessor(e.target.value)}
         >
           {professors.map((p) => (
@@ -164,9 +167,10 @@ const Form = () => {
           rows={4}
           cols={50}
           value={reviews}
+          className="mb-7 block p-2.5 w-96 text-base bg-gray-950 text-gray-50 rounded-lg border border-gray-300" 
+          placeholder="Write your thoughts here..."
           onChange={(e) => setReviews(e.target.value)}
         ></textarea>
-        <br />
 
         <label htmlFor="difficulty">Rate the class difficulty (1-5):</label>
         <br />
@@ -176,6 +180,8 @@ const Form = () => {
           min={1}
           max={5}
           value={difficulty}
+          className="mb-7 w-96 p-2.5 bg-gray-950 border border-gray-300 text-gray-50 text-base rounded-lg" 
+          placeholder="5"
           onChange={(e) => setDifficulty(e.target.value)}
         />
         <br />
@@ -188,11 +194,20 @@ const Form = () => {
           min={1}
           max={5}
           value={ratings}
+          className="mb-7 w-96 p-2.5 bg-gray-950 border border-gray-300 text-gray-50 text-base rounded-lg" 
+          placeholder="5"
           onChange={(e) => setProfessorRating(e.target.value)}
         />
         <br />
+        <label className="">Upload Syllabus here (if you want)</label>
+        <input className="mb-7 w-96 p-2.5 block w-full text-sm text-gray-50 border border-gray-300 rounded-lg cursor-pointer bg-gray-950" 
+        id="file_input" 
+        type="file" />
 
-        <button type="submit">Submit</button>
+        <button 
+        type="submit"
+        className="inline-block ml-32 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        >Submit</button>
       </form>
     </div>
   );
