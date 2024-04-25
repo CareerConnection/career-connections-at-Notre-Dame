@@ -15,21 +15,27 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     try {
       let user = await Parse.User.logIn(username, password);
-      console.log('Logged in user', user);
+      console.log("Logged in user", user);
       // Redirect to /dashboard
       window.location.href = "/Courses";
     } catch (error: any) {
-      console.error('Error while logging in user', error);
+      console.error("Error while logging in user", error);
       setError("Invalid username or password.");
     }
   };
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <form onSubmit={handleLogin} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <h2 className="text-xl font-bold mb-4">Login</h2>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="username"
+          >
             Username
           </label>
           <input
@@ -43,7 +49,10 @@ const LoginPage: React.FC = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
