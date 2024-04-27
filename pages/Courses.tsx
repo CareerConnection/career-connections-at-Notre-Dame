@@ -71,16 +71,13 @@ const Dashboard: React.FC = () => {
         )
     );
   }
-  // const handleAddToCart = (course) => {
-  //   const existingCartItemIndex = cart.findIndex((item) => item.objectId === course.objectId);
-  //   if (existingCartItemIndex !== -1) {
-  //     const updatedCart = [...cart];
-  //     updatedCart[existingCartItemIndex].quantity += 1;
-  //     setCart(updatedCart);
-  //   } else {
-  //     setCart([...cart, { ...course, quantity: 1 }]);
-  //   }
-  // };
+
+  // Sort by professor's last name
+  finalCourses.sort((a, b) => {
+    const lastNameA = a.professors[0].split(" ").pop(); // Get the last name of professor A
+    const lastNameB = b.professors[0].split(" ").pop(); // Get the last name of professor B
+    return lastNameA.localeCompare(lastNameB);
+  });
 
   return (
     <>
@@ -97,14 +94,6 @@ const Dashboard: React.FC = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="border border-gray-300 p-2 rounded-md mr-2"
                 />
-                {/* <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="border border-gray-300 p-2 rounded-md mr-2"
-                >
-                  <option value="">Sort by...</option>
-                  <option value="rating">Rating</option>
-                </select> */}
                 <select
                   value={filterByProfessor}
                   onChange={(e) => setFilterByProfessor(e.target.value)}
@@ -120,8 +109,7 @@ const Dashboard: React.FC = () => {
                   )}
                 </select>
               </div>
-              {finalCourses.sort((a, b) => a.class.localeCompare(b.class))
-              .map((course, index) => (
+              {finalCourses.map((course, index) => (
                 <div
                   key={index}
                   className="border border-gray-300 p-4 mt-4 rounded-md cursor-pointer hover:bg-gray-200 transition-all duration-200 ease-out"
@@ -130,13 +118,6 @@ const Dashboard: React.FC = () => {
                   <h3 className="text-xl font-bold">{course.class}</h3>
                   <p>Professor: {course.professors.join(", ")}</p>
                   <p>ID: {course.classID}</p>
-                  {/* <button
-                  <button
-                    onClick={() => handleAddToCart(course)}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Add to Cart
-                  </button> */}
                 </div>
               ))}
             </div>
@@ -174,4 +155,3 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-
