@@ -23,11 +23,11 @@ const SignUpPage: React.FC = () => {
       user.set("password", password);
       await user.signUp();
       console.log("User signed up successfully");
-  
+
       // Log in the user after signing up
       await Parse.User.logIn(username, password);
       console.log("User logged in successfully");
-  
+
       setSignedUp(true);
     } catch (error) {
       console.error("Error signing up user", error);
@@ -45,10 +45,16 @@ const SignUpPage: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <form onSubmit={handleSignUp} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form
+        onSubmit={handleSignUp}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <h2 className="text-xl font-bold mb-4">Sign Up</h2>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="username"
+          >
             Username
           </label>
           <input
@@ -62,7 +68,10 @@ const SignUpPage: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -76,7 +85,10 @@ const SignUpPage: React.FC = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input

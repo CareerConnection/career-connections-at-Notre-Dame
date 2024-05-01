@@ -1,4 +1,4 @@
-# Odyssey Docs 
+# Odyssey Docs
 
 ## Local Development
 

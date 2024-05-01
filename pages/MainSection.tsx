@@ -82,7 +82,10 @@ const MainSection: React.FC = () => {
         <div className="w-full mt-6 max-w-5xl">
           <div className="text-4xl">Courses</div>
           {course.map((person, index) => (
-            <div key={index} className="w-full flex-col border border-gray-300 p-4 mt-4 rounded-md">
+            <div
+              key={index}
+              className="w-full flex-col border border-gray-300 p-4 mt-4 rounded-md"
+            >
               <h3 className="text-xl font-bold">{person.class}</h3>
               <p>Professor: {person.professor}</p>
               <p>ID: {person.classID}</p>
