@@ -29,18 +29,45 @@ export default function Home() {
     sessionStorage.setItem("semesters", JSON.stringify(semesters));
   };
 
+  const downloadCSV = () => {
+    // Add column titles for the CSV file
+    const csvContent = "data:text/csv;charset=utf-8," +
+      "semester, class, credits\n" + // Updated column titles
+      semesters.map((semester, semesterIndex) => (
+        semester.map((classInfo, classIndex) => (
+          `${semesterIndex + 1},${classInfo.name},${classInfo.creditHours}` // Removed classIndex
+        )).join("\n")
+      )).join("\n");
+  
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "planner_data.csv");
+    document.body.appendChild(link);
+    link.click();
+  };
+
   useEffect(() => {
     sessionStorage.setItem("semesters", JSON.stringify(semesters));
   }, [semesters]);
 
   return (
     <div className="max-w-5xl container mx-auto p-4">
+      <Head>
+        <title>Planner</title>
+      </Head>
       <h1 className="text-4xl">Planner</h1>
       <button
         onClick={saveData}
         className="flex items-center justify-center mt-8 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 ease-out"
       >
         Save
+      </button>
+      <button
+        onClick={downloadCSV}
+        className="flex items-center justify-center mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition-all duration-200 ease-out"
+      >
+        Download Planner as CSV
       </button>
       {Array.from({ length: totalSemesters / 2 }, (_, row) => (
         <div className="flex flex-row" key={row}>
@@ -82,4 +109,3 @@ export default function Home() {
     </div>
   );
 }
-
