@@ -8,14 +8,17 @@ export default function Home() {
   // Create initial state for all classes in all semesters
   const initialClassesState = Array(totalSemesters)
     .fill(null)
-    .map(() => Array(classesPerSemester).fill(""));
+    .map(() => Array(classesPerSemester).fill({ name: "", creditHours: 0 }));
 
-  // State to hold all class names
+  // State to hold all class names and credit hours
   const [semesters, setSemesters] = useState(initialClassesState);
 
-  const handleInputChange = (semesterIndex, classIndex, value) => {
+  const handleInputChange = (semesterIndex, classIndex, fieldName, value) => {
     const updatedSemesters = [...semesters];
-    updatedSemesters[semesterIndex][classIndex] = value;
+    updatedSemesters[semesterIndex][classIndex] = {
+      ...updatedSemesters[semesterIndex][classIndex],
+      [fieldName]: value
+    };
     setSemesters(updatedSemesters);
   };
 
@@ -46,16 +49,31 @@ export default function Home() {
             return (
               <div className="w-1/2 flex flex-col text-lg" key={semesterIndex}>
                 <h2 className="mt-4 mb-2">Semester {semesterIndex + 1}</h2>
-                {semesters[semesterIndex].map((className, index) => (
-                  <input
-                    key={index}
-                    value={className}
-                    onChange={(e) =>
-                      handleInputChange(semesterIndex, index, e.target.value)
-                    }
-                    className="border p-1"
-                  />
+                {semesters[semesterIndex].map((classInfo, index) => (
+                  <div key={index} className="flex justify-between items-center mb-2">
+                    <input
+                      value={classInfo.name}
+                      onChange={(e) =>
+                        handleInputChange(semesterIndex, index, "name", e.target.value)
+                      }
+                      className="border p-1 mr-2"
+                      placeholder="Class Name"
+                    />
+                    <input
+                      value={classInfo.creditHours}
+                      onChange={(e) =>
+                        handleInputChange(semesterIndex, index, "creditHours", parseInt(e.target.value) || 0)
+                      }
+                      type="number"
+                      className="border p-1"
+                      placeholder="Credit Hours"
+                    />
+                  </div>
                 ))}
+                <div>
+                  Total Credit Hours:{" "}
+                  {semesters[semesterIndex].reduce((acc, curr) => acc + curr.creditHours, 0)}
+                </div>
               </div>
             );
           })}
@@ -64,3 +82,4 @@ export default function Home() {
     </div>
   );
 }
+
