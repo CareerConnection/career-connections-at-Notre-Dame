@@ -71,6 +71,11 @@ const Dashboard: React.FC = () => {
         )
     );
   }
+  const avg_difficulty_response = () => { 
+    const sum = additionalInfo.reduce((acc, course) => acc + course.difficulties, 0);
+    const avg = sum /additionalInfo.length;
+    return avg;
+  }
   // const handleAddToCart = (course) => {
   //   const existingCartItemIndex = cart.findIndex((item) => item.objectId === course.objectId);
   //   if (existingCartItemIndex !== -1) {
@@ -160,7 +165,7 @@ const Dashboard: React.FC = () => {
                       Past Syllabus
                     </Link>
                   )}
-                  <p><a className="font-bold">Difficulty:</a> {additionalInfo.difficulties}/5</p>
+                  <p><a className="font-bold">Difficulty:</a> {avg_difficulty_response()}/5</p>
                   <p><a className="font-bold">Description:</a> {additionalInfo.description}</p>
                   <p><a className="font-bold">Summarized Review:</a> {additionalInfo.reviews}</p>
                 </div>
