@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 interface Class {
   name: string;
@@ -14,50 +15,50 @@ const Planner: React.FC = () => {
     {
       industry: "Full Stack Development",
       classes: [
-        { name: "Modern Web Development"},
-        { name: "Database Concepts"},
-        { name: "Human Computer Interaction"},
+        { name: "Modern Web Development" },
+        { name: "Database Concepts" },
+        { name: "Human Computer Interaction" },
       ],
     },
     {
       industry: "Back End Development",
       classes: [
-        { name: "Database Concepts"},
-        { name: "Modern Web Development"},
-        { name: "Open Source Development"},
+        { name: "Database Concepts" },
+        { name: "Modern Web Development" },
+        { name: "Open Source Development" },
       ],
     },
     {
       industry: "Front End Development",
       classes: [
-        { name: "Modern Web Development"},
-        { name: "Human Computer Interaction"},
-        { name: "Open Source Development"},
+        { name: "Modern Web Development" },
+        { name: "Human Computer Interaction" },
+        { name: "Open Source Development" },
       ],
     },
     {
       industry: "Startups",
       classes: [
-        { name: "Case Studies in Computing-Based Entrepreneurship"},
-        { name: "Modern Web Development"},
-        { name: "Human Computer Interaction"},
-        { name: "Introduction to Artificial Intelligence"},
+        { name: "Case Studies in Computing-Based Entrepreneurship" },
+        { name: "Modern Web Development" },
+        { name: "Human Computer Interaction" },
+        { name: "Introduction to Artificial Intelligence" },
       ],
     },
     {
       industry: "AI",
       classes: [
-        { name: "Introduction to Artificial Intelligence"},
-        { name: "Machine Learning"},
-        { name: "AI and Social Good: AI and Society"},
+        { name: "Introduction to Artificial Intelligence" },
+        { name: "Machine Learning" },
+        { name: "AI and Social Good: AI and Society" },
       ],
     },
     {
       industry: "Consulting",
       classes: [
-        { name: "CSE Service Projects"},
-        { name: "Human Computer Interaction"},
-        { name: "AI and Social Good: AI and Society"},
+        { name: "CSE Service Projects" },
+        { name: "Human Computer Interaction" },
+        { name: "AI and Social Good: AI and Society" },
       ],
     },
   ];
@@ -72,11 +73,16 @@ const Planner: React.FC = () => {
             <h3 className="text-xl mt-4">{industryClass.industry}</h3>
             <div className="flex flex-col gap-2 mt-2">
               {industryClass.classes.map((cls, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 border rounded-md"
-                >
-                  <h4 className="">{cls.name}</h4>
+                <div key={idx} className="p-4 border rounded-md">
+                  <Link
+                    href={{
+                      pathname: "/Courses",
+                      query: { course: encodeURIComponent(cls.name) },
+                    }}
+                    onClick={() => setSelectedCourse(cls)}
+                  >
+                    <span className="cursor-pointer">{cls.name}</span>
+                  </Link>
                 </div>
               ))}
             </div>
