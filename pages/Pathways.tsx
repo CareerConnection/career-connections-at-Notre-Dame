@@ -14,50 +14,52 @@ const Planner: React.FC = () => {
     {
       industry: "Full Stack Development",
       classes: [
-        { name: "Modern Web Development"},
-        { name: "Database Concepts"},
-        { name: "Human Computer Interaction"},
+        { name: "Modern Web Development   ID:CSE 40693"},
+        { name: "Database Concepts   ID:CSE 30246"},
+        { name: "Human Computer Interaction   ID:CSE 40424"},
       ],
     },
     {
       industry: "Back End Development",
       classes: [
-        { name: "Database Concepts"},
-        { name: "Modern Web Development"},
-        { name: "Open Source Development"},
+        { name: "Database Concepts   ID:CSE 30246"},
+        { name: "Modern Web Development   ID:CSE 40693"},
+        { name: "Open Source Development    Not Currently Offered"},
       ],
     },
     {
       industry: "Front End Development",
       classes: [
-        { name: "Modern Web Development"},
-        { name: "Human Computer Interaction"},
-        { name: "Open Source Development"},
+        { name: "Modern Web Development   ID:CSE 40693"},
+        { name: "Human Computer Interaction   ID:CSE 40424"},
+        { name: "Open Source Development    Not Currently Offered"},
+        { name: "Data Visualization   ID:CSE 40838"},
       ],
     },
     {
       industry: "Startups",
       classes: [
         { name: "Case Studies in Computing-Based Entrepreneurship"},
-        { name: "Modern Web Development"},
-        { name: "Human Computer Interaction"},
-        { name: "Introduction to Artificial Intelligence"},
+        { name: "Modern Web Development   ID:CSE 40693"},
+        { name: "Human Computer Interaction   ID:CSE 40424"},
+        { name: "Introduction to Artificial Intelligence    ID:CSE 30124"},
+        { name: "Game Development    ID:CSE 40232"},
       ],
     },
     {
       industry: "AI",
       classes: [
-        { name: "Introduction to Artificial Intelligence"},
-        { name: "Machine Learning"},
-        { name: "AI and Social Good: AI and Society"},
+        { name: "Introduction to Artificial Intelligence    ID:CSE 30124"},
+        { name: "Machine Learning   ID:CSE 40625"},
+        { name: "AI and Social Good: AI and Society   Not Currently Offered"},
       ],
     },
     {
       industry: "Consulting",
       classes: [
         { name: "CSE Service Projects"},
-        { name: "Human Computer Interaction"},
-        { name: "AI and Social Good: AI and Society"},
+        { name: "Human Computer Interaction   ID:CSE 40424"},
+        { name: "AI and Social Good: AI and Society   Not Currently Offered"},
       ],
     },
   ];
@@ -65,7 +67,7 @@ const Planner: React.FC = () => {
   return (
     <div className="max-w-5xl container mx-auto p-4">
       <h1 className="text-4xl">Pathways</h1>
-      <h2 className="mt-4">See recommended classes for career paths.</h2>
+      <h2 className="mt-4">See recommended current class offerings for career paths.</h2>
       <div className="mt-8">
         {industryClasses.map((industryClass, index) => (
           <div key={index}>
