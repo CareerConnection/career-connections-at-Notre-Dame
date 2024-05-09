@@ -4,6 +4,7 @@ import Link from 'next/link';
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <img src="/components/Odyssey.png" alt="Odyssey Logo" className="max-w-xs mt-5 mb-3" />
       <h1 className="text-4xl font-bold">Welcome to Odyssey</h1>
       <p className="max-w-xl text-lg text-center mt-2">Find class reviews and syllabuses easily.</p>
       <div className="flex flex-row gap-2 mt-4">
